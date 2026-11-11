@@ -1,0 +1,28 @@
+server {
+    listen ${PORT};
+    listen [::]:${PORT};
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+    server_tokens off;
+    absolute_redirect off;
+    port_in_redirect off;
+    charset utf-8;
+    charset_types text/css text/plain application/javascript application/json text/csv image/svg+xml;
+
+    gzip on;
+    gzip_types text/css application/javascript application/json text/csv text/plain image/svg+xml;
+    gzip_min_length 256;
+
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+    add_header X-Frame-Options DENY always;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~* \.py$ {
+        default_type text/plain;
+    }
+}

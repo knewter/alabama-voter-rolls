@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The numbers reproduce · Alabama Rolls &amp; the Estimate</title>
+  <meta name="description" content="An independent check of October 2026 Alabama voter-registration totals against the Census 2020–2024 citizen voting-age population estimate. The published claim’s figures reproduce. The comparison is not proof of illegal votes.">
+  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="The numbers reproduce — Alabama rolls and the Census estimate">
+  <meta property="og:description" content="October 2026 Alabama registration totals compared with the Census 2020–2024 CVAP estimate. Independent reproduction. Not a government site.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        <a class="brand-name" href="#content">Rolls &amp; the Estimate</a>
+        <p class="snapshot">October 2026 registrations · ACS 2020–2024 estimate</p>
+      </div>
+      <nav class="nav" aria-label="Page">
+        <a href="#finding">Finding</a>
+        <a href="#checked">Checked figures</a>
+        <a href="#reading">How to read this</a>
+        <a href="#explorer">Counties</a>
+        <a href="#method">Method</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="wrap">
+      <section id="finding">
+        <p class="kicker">01 — Finding</p>
+        <h1>The numbers reproduce.</h1>
+        <p class="limit"><strong>What the match does not show.</strong> This is a registration count compared with a survey estimate. It is not proof of illegal votes. Inactive registrants may vote after reidentification, and an October 2026 roll is being set against an ACS 2020–2024 estimate.</p>
+        <p class="lede">A public post on November 10, 2026 said Alabama’s official voter roll was 100.2% of the Census figure for adult citizens, that 32 of 67 counties were over 100%, that 28 stayed over after the margin of error, and that the roll includes 462,824 inactive registrations. Those figures match the Secretary of State’s October 2026 worksheet and the Census Bureau’s 2020–2024 citizen voting-age population (CVAP) special tabulation.</p>
+
+        <div class="hero-grid">
+          <div>
+            <p class="view-flag" id="view-flag">Claim comparison · active and inactive</p>
+            <fieldset class="mode">
+              <legend>Which registrations are compared with the estimate?</legend>
+              <label class="mode-option">
+                <input id="mode-total" type="radio" name="mode" value="total" checked>
+                <span>
+                  <strong>Active and inactive</strong>
+                  <small>The official total. This is the comparison in the November 10 claim.</small>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input id="mode-active" type="radio" name="mode" value="active">
+                <span>
+                  <strong>Active only</strong>
+                  <small>A sensitivity check. Inactive registrations stay on the roll but drop out of the rate.</small>
+                </span>
+              </label>
+            </fieldset>
+            <p class="mode-banner" id="mode-banner" role="status">Showing active and inactive registrations, the comparison in the November 10 claim. Statewide rate 100.2 percent. 32 of 67 counties are above the estimate. 28 of 67 are above the upper bound.</p>
+          </div>
+          <dl class="stats">
+            <div class="stat">
+              <dt class="visually-hidden">Statewide rate</dt>
+              <dd>
+                <b id="stat-pct">100.2%</b>
+                <span>Statewide rate</span>
+              </dd>
+            </div>
+            <div class="stat">
+              <dt class="visually-hidden">Counties above the estimate</dt>
+              <dd>
+                <b id="stat-over">32 of 67</b>
+                <span>Above the estimate</span>
+              </dd>
+            </div>
+            <div class="stat">
+              <dt class="visually-hidden">Counties above the upper bound</dt>
+              <dd>
+                <b id="stat-bound">28 of 67</b>
+                <span>Above the upper bound</span>
+              </dd>
+            </div>
+            <div class="stat">
+              <dt class="visually-hidden">Inactive registrations</dt>
+              <dd>
+                <b id="stat-inactive">462,824</b>
+                <span id="stat-inactive-note">Included in the statewide rate</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <p class="equation" id="stat-equation">3,853,181 registrations ÷ 3,845,696 estimated adult citizens.</p>
+        <p class="gap-line" id="stat-gap">7,485 above the estimate, and 4,248 above the upper bound of 3,848,933.</p>
+
+        <div class="charts">
+          <figure class="chart" id="composition">
+            <figcaption class="chart-title">Inactive registrations close the gap</figcaption>
+            <div class="track" id="wide-track" aria-hidden="true">
+              <div class="seg" id="wide-seg"></div>
+              <div class="tick" id="wide-hundred"></div>
+              <div class="dot dot-active" id="wide-active"></div>
+              <div class="dot dot-total" id="wide-total"></div>
+            </div>
+            <div class="axis" aria-hidden="true">
+              <span>80%</span><span>90%</span><span>100%</span><span>110%</span>
+            </div>
+            <p class="chart-note" id="wide-note">The pine dot is active registrations. The brass segment is inactive registrations. The black tick is the Census estimate. The axis runs from 80% to 110% and does not start at zero.</p>
+          </figure>
+          <figure class="chart" id="inset-chart">
+            <figcaption class="chart-title">Statewide total against the 90% interval</figcaption>
+            <div class="track" id="inset-track" aria-hidden="true">
+              <div class="band" id="inset-band"></div>
+              <div class="tick" id="inset-hundred"><span>100%</span></div>
+              <div class="dot dot-total" id="inset-total"></div>
+            </div>
+            <div class="axis" aria-hidden="true">
+              <span>99.6%</span><span>100%</span><span>100.6%</span>
+            </div>
+            <p class="chart-note" id="inset-note">Zoomed to 99.6%–100.6% of the estimate. The shaded band is the Census margin of error. The brass dot is all October 2026 registrations.</p>
+          </figure>
+        </div>
+        <p class="sensitivity-live" id="sensitivity-live" hidden></p>
+      </section>
+
+      <section id="checked">
+        <p class="kicker">02 — Checked figures</p>
+        <h2>The claim and the sources agree.</h2>
+        <p>The claim is a post on X from November 10, 2026. The reproduction uses the October worksheet in ALVR-2026 and the Census CVAP “Total” line. Percentages are half-up to one decimal. “Over” counts are exact integer differences.</p>
+        <div class="match">
+          <article class="match-row">
+            <p class="match-name">Statewide rate</p>
+            <p><span class="k">Claim</span> 100.2%</p>
+            <p><span class="k">Sources</span> 100.2%</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Counties above the estimate</p>
+            <p><span class="k">Claim</span> 32 of 67</p>
+            <p><span class="k">Sources</span> 32 of 67</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Counties above the upper bound</p>
+            <p><span class="k">Claim</span> 28 of 67</p>
+            <p><span class="k">Sources</span> 28 of 67</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Inactive registrations</p>
+            <p><span class="k">Claim</span> 462,824</p>
+            <p><span class="k">Sources</span> 462,824</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Madison</p>
+            <p><span class="k">Claim</span> 109.9%, 30,372 over</p>
+            <p><span class="k">Sources</span> 109.9%, 30,372 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Baldwin</p>
+            <p><span class="k">Claim</span> 112.8%, 24,298 over</p>
+            <p><span class="k">Sources</span> 112.8%, 24,298 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Shelby</p>
+            <p><span class="k">Claim</span> 106.9%, 11,846 over</p>
+            <p><span class="k">Sources</span> 106.9%, 11,846 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Limestone</p>
+            <p><span class="k">Claim</span> 104.7%, 3,978 over</p>
+            <p><span class="k">Sources</span> 104.7%, 3,978 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">St. Clair</p>
+            <p><span class="k">Claim</span> 102.8%, 2,050 over</p>
+            <p><span class="k">Sources</span> 102.8%, 2,050 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Randolph</p>
+            <p><span class="k">Claim</span> 110.0%, 1,774 over</p>
+            <p><span class="k">Sources</span> 110.0%, 1,774 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+          <article class="match-row">
+            <p class="match-name">Lowndes</p>
+            <p><span class="k">Claim</span> 122.3%, 1,711 over</p>
+            <p><span class="k">Sources</span> 122.3%, 1,711 over</p>
+            <p class="match-flag">Match</p>
+          </article>
+        </div>
+        <p class="aside-note">Autauga (103.8%, 1,719 over) and Jefferson (100.3%, 1,712 over) also clear the upper bound, by a similar number of registrations to Lowndes. They were not named in the claim. Both are in the county table. The seven named counties are not the seven largest gaps: Madison, Baldwin, Shelby, Limestone, and St. Clair are the five largest; Randolph and Lowndes were highlighted for their rates.</p>
+      </section>
+
+      <section id="reading">
+        <p class="kicker">03 — How to read this</p>
+        <h2>Two different kinds of numbers.</h2>
+        <div class="reading-grid">
+          <article>
+            <h3>The numerator is a roll</h3>
+            <p>It is a count of people on Alabama’s official registration list in October 2026. Active and inactive together are the official total: 3,390,357 + 462,824 = 3,853,181. Inactive registrants remain on that list. They may vote after reidentification.</p>
+          </article>
+          <article>
+            <h3>The denominator is an estimate</h3>
+            <p>CVAP here is the Census special tabulation of U.S. citizens age 18 and older, from the 2020–2024 American Community Survey. The state estimate is 3,845,696, plus or minus 3,237. That margin is an approximate 90% confidence interval, not a 95% interval. CVAP does not remove disqualifications under Alabama law, so it is not a count of people currently allowed to vote.</p>
+          </article>
+          <article>
+            <h3>The dates do not match</h3>
+            <p>The roll is an October 2026 snapshot. The estimate summarizes surveys from 2020 through 2024 and was published January 30, 2026. In a fast-growing county, the roll can include adult citizens the survey window has not fully picked up. A person can also be counted in one county under Census residency rules and be registered in another.</p>
+          </article>
+          <article>
+            <h3>Over 100% is a gap between a list and an estimate</h3>
+            <p>It means the roll is larger than the estimate. It is not proof of illegal votes. This site does not count ballots and does not identify any person. A rate above the upper bound means the gap is larger than the published margin of error. That is still a comparison of a list to a survey.</p>
+          </article>
+        </div>
+        <h3>The four counties inside the margin</h3>
+        <p>Thirty-two counties are above the estimate. Twenty-eight of those are also above the upper bound. The other four are above the estimate only: Lawrence (100.6%, 144 over, margin ±167), Escambia (100.3%, 94 over, margin ±105), Covington (100.3%, 80 over, margin ±84), and Chambers (100.1%, 32 over, margin ±107).</p>
+        <h3>Active registrations only</h3>
+        <p>Leaving inactive registrations out of the rate, the state figure is 88.16% (3,390,357 ÷ 3,845,696), which is 455,339 below the estimate. Half-up to one decimal, that rate is 88.2%. Three counties stay above 100% on active registrations alone: Lowndes 105.1%, Perry 104.3%, and Washington 100.7%. Lowndes and Perry also clear the upper bound. Washington does not: 12,164 active registrations, against an upper bound of 12,172.</p>
+      </section>
+
+      <section id="explorer">
+        <p class="kicker">04 — Counties</p>
+        <h2>Every county, from the same worksheet.</h2>
+        <p class="snapshot">October 2026 registrations · ACS 2020–2024 estimate</p>
+        <p>Choose a county. The cards and the table follow the control at the top of the page, so switching to active registrations changes the rates, the gaps, and the county counts together.</p>
+        <noscript>
+          <p class="error">The county browser needs JavaScript. The checked figures, the reading notes, the method, and the CSV download are still in the page.</p>
+        </noscript>
+        <p id="load-error" class="error" hidden>The interactive county figures did not load. The checked totals above are still on this page, and the CSV download below has every county.</p>
+
+        <h3>Counties named in the claim</h3>
+        <p>Bars run from 86% to 126% of that county’s own estimate. The dark tick is 100%. The scale is the same in both views, so the bars move when inactive registrations are left out.</p>
+        <ul class="legend">
+          <li><i class="swatch bound" aria-hidden="true"></i> Above the upper bound</li>
+          <li><i class="swatch estimate" aria-hidden="true"></i> Above the estimate only</li>
+          <li><i class="swatch under" aria-hidden="true"></i> At or below the estimate</li>
+        </ul>
+        <ul class="seven-grid" id="named-cards"></ul>
+
+        <h3>All 67 counties</h3>
+        <div class="hist-wrap">
+          <div class="hist" id="hist-plot" aria-hidden="true"></div>
+          <div class="hist-hundred" id="hist-hundred" aria-hidden="true"><span>100%</span></div>
+        </div>
+        <p class="hist-summary" id="hist-summary">Distribution loads with the county file.</p>
+
+        <div class="tools">
+          <div>
+            <label class="tool-label" for="q">Search counties</label>
+            <input id="q" class="search" type="search" placeholder="Try Lowndes, St. Clair, DeKalb" autocomplete="off" spellcheck="false">
+          </div>
+          <div>
+            <p class="tool-label" id="filter-label">Show</p>
+            <div class="chips" role="group" aria-labelledby="filter-label">
+              <button type="button" class="chip" id="filter-all" aria-pressed="true">All 67</button>
+              <button type="button" class="chip" id="filter-bound" aria-pressed="false">Upper bound 28</button>
+              <button type="button" class="chip" id="filter-estimate" aria-pressed="false">Estimate only 4</button>
+              <button type="button" class="chip" id="filter-under" aria-pressed="false">At or below 35</button>
+            </div>
+          </div>
+          <div class="sort-tools">
+            <p class="tool-label" id="sort-label">Sort</p>
+            <div class="chips" role="group" aria-labelledby="sort-label">
+              <button type="button" class="chip" id="sort-over" aria-pressed="true">Difference ↓</button>
+              <button type="button" class="chip" id="sort-pct" aria-pressed="false">Percent</button>
+              <button type="button" class="chip" id="sort-county" aria-pressed="false">Name</button>
+              <button type="button" class="chip" id="sort-registered" aria-pressed="false">Registered</button>
+            </div>
+          </div>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite">Showing 67 counties</p>
+        <p id="empty-note" class="empty-note" hidden>No county matches.</p>
+        <ul class="county-list" id="county-cards">
+          <li>Loading county figures…</li>
+        </ul>
+        <div class="table-scroll">
+          <table id="county-table">
+            <caption id="table-caption">All 67 Alabama counties. October 2026 registrations compared with the ACS 2020–2024 estimate.</caption>
+            <thead>
+              <tr>
+                <th aria-sort="none"><button type="button" data-sort="county">County</button></th>
+                <th aria-sort="none"><button type="button" data-sort="status">Status</button></th>
+                <th class="num" aria-sort="none"><button type="button" data-sort="registered">Registered</button></th>
+                <th class="num">CVAP estimate</th>
+                <th class="num">Margin</th>
+                <th class="num" aria-sort="none"><button type="button" data-sort="pct">Percent</button></th>
+                <th class="num" aria-sort="descending"><button type="button" data-sort="over">Difference</button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="7">Loading county figures…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="method">
+        <p class="kicker">05 — Method</p>
+        <h2>The arithmetic, in one place.</h2>
+        <p>Registrations in the claim’s comparison are active plus inactive. The sensitivity check uses active alone. The estimate is <code>cvap_est</code>. The margin of error is <code>cvap_moe</code>.</p>
+        <div class="formula">
+          <span class="line"><span aria-hidden="true">percent = 100 × registrations ÷ cvap_est</span><span class="visually-hidden">percent equals 100 times registrations divided by the CVAP estimate</span></span>
+          <span class="line"><span aria-hidden="true">over = registrations − cvap_est</span><span class="visually-hidden">over equals registrations minus the CVAP estimate</span></span>
+          <span class="line"><span aria-hidden="true">above the estimate when registrations &gt; cvap_est</span><span class="visually-hidden">above the estimate when registrations are greater than the CVAP estimate</span></span>
+          <span class="line"><span aria-hidden="true">above the upper bound when registrations &gt; cvap_est + cvap_moe</span><span class="visually-hidden">above the upper bound when registrations are greater than the CVAP estimate plus the margin of error</span></span>
+        </div>
+        <p>One-decimal percentages use half-up rounding. A second decimal of 5 rounds away from zero. 100.15 would print as 100.2, and 100.14 would print as 100.1. The county file stores both the longer ratio and the one-decimal result.</p>
+        <p>Worked statewide example, using the state CVAP row rather than the sum of the counties: 3,853,181 ÷ 3,845,696 × 100 = 100.194633%, which half-up rounds to 100.2%. The difference is 3,853,181 − 3,845,696 = 7,485. The upper bound is 3,845,696 + 3,237 = 3,848,933. The official total is 4,248 above that bound, so the same rule that flags a county also flags the state total.</p>
+        <p>Active only: 3,390,357 ÷ 3,845,696 × 100 = 88.159777%, printed here as 88.16%. Half-up to one decimal is 88.2%. The gap is 3,390,357 − 3,845,696 = −455,339.</p>
+        <p>Inactive registrations are 462,824 ÷ 3,845,696 of the estimate, 12.03 percentage points. Adding them to the active rate is what moves the state from 88.16% to 100.2%.</p>
+        <p>The 67 county estimates sum to 3,845,715, which is 19 higher than the state estimate of 3,845,696. Census rounds each published estimate, so the counties do not have to add up to the state. The statewide rate uses the state row.</p>
+        <p>The October worksheet lists each county plus a total. Column B is the official total, column L is active, and column V is inactive. The sheet’s total equals column L plus column V in every row used here. Two worksheet names differ from the Census names: ST_CLAIR is St. Clair, and DEKALB is DeKalb.</p>
+        <p>The reproduction notes that ACS table B29001, same 2020–2024 vintage, is within ±4 people of this special tabulation at the county level. The over counts match the special tabulation, not B29001.</p>
+      </section>
+
+      <section id="sources">
+        <p class="kicker">06 — Sources and downloads</p>
+        <h2>Primary files, and the script that reads them.</h2>
+        <ol class="sources">
+          <li>
+            <strong>Original claim.</strong> Public post on X, November 10, 2026.
+            <div><a href="https://x.com/_Patriot1776Q_/status/2120194509128737136">https://x.com/_Patriot1776Q_/status/2120194509128737136</a></div>
+          </li>
+          <li>
+            <strong>Registration numerator.</strong> Alabama Secretary of State, Voter Registration Statistics, file ALVR-2026.xlsx, October worksheet. Official total 3,853,181 = active 3,390,357 + inactive 462,824.
+            <div><a href="https://www.sos.alabama.gov/sites/default/files/election-data/2026-11/ALVR-2026.xlsx">https://www.sos.alabama.gov/sites/default/files/election-data/2026-11/ALVR-2026.xlsx</a></div>
+            <div>Index: <a href="https://www.sos.alabama.gov/alabama-votes/voter/election-data">https://www.sos.alabama.gov/alabama-votes/voter/election-data</a></div>
+          </li>
+          <li>
+            <strong>Population denominator.</strong> U.S. Census Bureau, Citizen Voting Age Population special tabulation from the 2020–2024 5-year ACS, county and state files, line “Total”, fields cvap_est and cvap_moe. Published January 30, 2026.
+            <div>Zip: <a href="https://www2.census.gov/programs-surveys/decennial/rdo/datasets/2024/2024-cvap/CVAP_2020-2024_ACS_csv_files.zip">https://www2.census.gov/programs-surveys/decennial/rdo/datasets/2024/2024-cvap/CVAP_2020-2024_ACS_csv_files.zip</a></div>
+            <div>Documentation: <a href="https://www2.census.gov/programs-surveys/decennial/rdo/technical-documentation/special-tabulation/CVAP_2020-2024_ACS_documentation_v1.pdf">https://www2.census.gov/programs-surveys/decennial/rdo/technical-documentation/special-tabulation/CVAP_2020-2024_ACS_documentation_v1.pdf</a></div>
+            <div>Landing page: <a href="https://www.census.gov/programs-surveys/decennial-census/about/voting-rights/cvap/2020-2024-CVAP.html">https://www.census.gov/programs-surveys/decennial-census/about/voting-rights/cvap/2020-2024-CVAP.html</a></div>
+          </li>
+        </ol>
+        <div class="downloads">
+          <a class="download" href="data/county_results.csv" download="county_results.csv">
+            <span>County results</span>
+            <strong>CSV</strong>
+            <small>All 67 counties, with both rates, both flags, the margin of error, and the source labels.</small>
+          </a>
+          <a class="download" href="data/reproduce.py" download="reproduce.py">
+            <span>Reproduction script</span>
+            <strong>Python</strong>
+            <small>Unchanged methodology. It reads the workbook and the Census CSVs. It is not required to view this page.</small>
+          </a>
+        </div>
+        <p class="fine">SHA-256 of the CSV: <span id="csv-hash">Shown when the county file loads.</span></p>
+        <p class="fine">To rerun the script, put it in a subfolder of a project directory (this copy lives in <code>data/</code>), install openpyxl, and place the inputs at <code>raw/ALVR-2026.xlsx</code>, <code>raw/cvap_2020_2024/County.csv</code>, and <code>raw/cvap_2020_2024/State.csv</code>. The script writes <code>exports/county_results.csv</code>. The website itself is static and does not run that script.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Rolls &amp; the Estimate</strong> is an independent reproduction of published figures. It is not a website of the Alabama Secretary of State or the U.S. Census Bureau.</p>
+      <p>No registrant is named. The page compares counts and a survey estimate. It is not proof of illegal votes.</p>
+      <p class="snapshot">October 2026 registration snapshot · Census CVAP, ACS 2020–2024, published January 30, 2026.</p>
+    </div>
+  </footer>
+
+  <dialog id="county-dialog" aria-labelledby="d-title">
+    <div class="dialog-body">
+      <div class="d-head">
+        <div>
+          <p class="snapshot" id="d-snapshot">October 2026 registrations · ACS 2020–2024 estimate</p>
+          <h2 id="d-title">County</h2>
+        </div>
+        <button type="button" class="d-close" id="d-close">Close</button>
+      </div>
+      <p class="pill" id="d-status"></p>
+      <p class="d-pct" id="d-pct"></p>
+      <p class="d-over" id="d-over"></p>
+      <p class="d-read" id="d-read"></p>
+      <dl class="kv" id="d-kv"></dl>
+    </div>
+  </dialog>
+  <script src="js/site.js" defer></script>
+</body>
+</html>
