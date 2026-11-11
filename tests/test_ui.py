@@ -88,6 +88,20 @@ class UiTests(unittest.TestCase):
                 self.assertEqual(page.locator("#stat-inactive").inner_text(), "462,824")
                 self.assertIn("not proof of illegal votes", page.locator("#finding").inner_text())
                 self.assertIn("ACS 2020–2024", page.locator("body").inner_text())
+                self.assertEqual(
+                    page.locator("#claim h1").inner_text(),
+                    "Statewide official rolls, 32 of 67 counties are over 100%.",
+                )
+                quote = page.locator("blockquote").inner_text()
+                self.assertIn("Madison County is at 109.9%, 30,372 over.", quote)
+                self.assertIn(
+                    "28 of those counties stay over after the Census margin of error. The official totals include 462,824 inactive voters still on the rolls.",
+                    quote,
+                )
+                self.assertGreater(
+                    page.locator(".claim-figure img").evaluate("img => img.naturalWidth"),
+                    1000,
+                )
 
                 page.locator("#mode-active").focus()
                 page.keyboard.press("Space")

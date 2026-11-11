@@ -42,6 +42,22 @@ class ContractTests(unittest.TestCase):
         self.assertIn("Lowndes 105.1%", page)
         self.assertIn("Perry 104.3%", page)
         self.assertIn("Washington 100.7%", page)
+        self.assertIn("Statewide official rolls, 32 of 67 counties are over 100%.", page)
+        self.assertIn("Madison County is at 109.9%, 30,372 over.", page)
+        self.assertIn("Lowndes County is at 122.3%, 1,711 over.", page)
+        self.assertIn(
+            "28 of those counties stay over after the Census margin of error. The official totals include 462,824 inactive voters still on the rolls.",
+            page,
+        )
+        self.assertIn("REGISTERED VS CENSUS ADULT CITIZENS | OCTOBER 2026", page)
+        self.assertIn("Statewide registrations", page)
+        self.assertIn("vs Census adult citizens", page)
+        self.assertIn("Counties over 100%", page)
+        self.assertIn("At or under 100%", page)
+        self.assertIn("https://x.com/_Patriot1776Q_/status/2120194509128737136", page)
+        self.assertIn("@_Patriot1776Q_", page)
+        self.assertIn("November 10, 2026", page)
+        self.assertIn('src="images/claim-graphic.jpg"', page)
         script = (ROOT / "data" / "reproduce.py").read_text(encoding="utf-8")
         self.assertIn("not proof", script)
         self.assertIn("survey estimate", script)
@@ -89,7 +105,7 @@ class ContractTests(unittest.TestCase):
         workflow = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
         self.assertIn("actions/deploy-pages", workflow)
         self.assertIn("actions/upload-pages-artifact", workflow)
-        for piece in ("index.html", "css", "js", "data", "fonts", ".nojekyll"):
+        for piece in ("index.html", "css", "js", "data", "fonts", "images", ".nojekyll"):
             self.assertIn(piece, workflow)
 
 

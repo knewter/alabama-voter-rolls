@@ -123,35 +123,41 @@
     const sensitivity = state.mode === "active";
     $("composition").classList.toggle("is-sensitivity", sensitivity);
     $("inset-chart").classList.toggle("is-sensitivity", sensitivity);
+    $("composition").querySelector(".chart-title").textContent = sensitivity
+      ? "Active registrations only, against the estimate"
+      : "From active registrations to the full roll";
+    $("inset-chart").querySelector(".chart-title").textContent = sensitivity
+      ? "The zoomed chart is still the full roll"
+      : "Zoomed in on 100%";
 
     if (sensitivity) {
       $("wide-note").textContent =
-        "Sensitivity check. The pine marker is active registrations, " +
+        "Active registrations only sit at " +
         meta.pct_active_2dp +
-        "% of the estimate. The brass segment is inactive registrations, left out of this rate. Axis runs from 80% to 110% and does not start at zero.";
+        "% of the estimate (pine dot). The faded brass bar is the inactive registrations this view leaves out. The chart runs from 80% to 110% and does not start at zero.";
       $("inset-note").textContent =
-        "This window is only 99.6% to 100.6% of the estimate, so the active-only rate of " +
+        "This chart only shows 99.6% to 100.6%. The active-only rate, " +
         meta.pct_active_2dp +
-        "% is off the chart to the left. The faded marker is still the all-registration rate, " +
+        "%, is far to the left of this window. The faded dot is still the all-registration rate, " +
         meta.pct_total_1dp +
-        "%, which clears the shaded 90% interval. It is not the rate in this check.";
+        "%, above the shaded margin of error. That faded dot is not the active-only rate.";
     } else {
       $("wide-note").textContent =
-        "The pine dot is active registrations (" +
+        "Active registrations are at " +
         meta.pct_active_2dp +
-        "% of the estimate). The brass segment adds inactive registrations and ends at " +
+        "% of the estimate (pine dot). Adding inactive registrations reaches " +
         meta.pct_total_1dp +
-        "%. The black tick is the estimate. On this 80% to 110% axis the 0.2 point overshoot is too small to see, so the next chart widens it. The axis does not start at zero.";
+        "% (the end of the brass bar). The black tick is the Census estimate. This chart runs from 80% to 110%, so the small step past 100% is hard to see. The next chart zooms in.";
       $("inset-note").textContent =
-        "Zoomed to 99.6%–100.6%. The shaded band is the Census 90% interval, " +
+        "Zoomed to 99.6%–100.6%. The shaded band is the Census margin of error, " +
         fmt(meta.cvap_est) +
         " ± " +
         fmt(meta.cvap_moe) +
-        ". The brass dot is all registrations, " +
+        ". The brass dot is every October 2026 registration, " +
         meta.pct_total_1dp +
         "%, which is " +
         fmt(meta.over_upper) +
-        " people above the upper end of that interval.";
+        " people above the top of that band.";
     }
   }
 
@@ -493,7 +499,7 @@
         ".";
       $("stat-inactive-note").textContent = "Included in the statewide rate";
       banner =
-        "Now showing active and inactive registrations, the comparison in the November 10 claim. Statewide rate " +
+        "Now showing active and inactive registrations, the comparison in the November 10 post. Statewide rate " +
         meta.pct_total_1dp +
         " percent. " +
         aboveEstimate +
@@ -588,7 +594,7 @@
     let extra = "";
     if (county.highlighted) {
       extra =
-        " This county was named in the November 10, 2026 claim, which used active and inactive registrations together.";
+        " This county was named in the November 10, 2026 post, which used active and inactive registrations together.";
       if (state.mode === "active") {
         extra += " The rate in this dialog is the active-only sensitivity check.";
       }
