@@ -235,9 +235,10 @@ section {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.7rem, 8vw, 5rem);
-  line-height: 0.96;
-  max-width: 11ch;
+  font-size: clamp(1.85rem, 5.4vw, 3.2rem);
+  line-height: 1.08;
+  max-width: 22ch;
+  text-wrap: balance;
 }
 
 h2 {
@@ -251,6 +252,110 @@ h2 {
   font-size: 1.125rem;
   max-width: 42rem;
   margin: 1rem 0 0;
+}
+
+.byline {
+  margin: 0.9rem 0 0;
+  max-width: 42rem;
+  color: var(--muted);
+}
+
+.quote-label {
+  margin: 1.6rem 0 0.55rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 680;
+  letter-spacing: 0;
+  max-width: none;
+}
+
+.claim-quote {
+  margin: 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 4px solid var(--ink);
+  max-width: 40rem;
+}
+
+.claim-quote p {
+  margin: 0 0 0.75rem;
+}
+
+.claim-quote p:last-child {
+  margin-bottom: 0;
+}
+
+.claim-figure {
+  margin: 1.4rem 0 0;
+}
+
+.claim-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
+.claim-figure figcaption {
+  margin-top: 0.7rem;
+  max-width: 42rem;
+  color: var(--muted);
+}
+
+.graphic-lines {
+  margin: 0.7rem 0 0.8rem;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.graphic-lines li {
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.plain {
+  font-family: var(--sans);
+}
+
+.where {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted);
+  font-weight: 550;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.chart-key {
+  margin-top: 1rem;
+}
+
+.key-dot,
+.key-tick {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: none;
+}
+
+.key-dot {
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+}
+
+.key-pine {
+  background: var(--pine);
+}
+
+.key-brass {
+  background: var(--brass);
+}
+
+.key-tick {
+  width: 2px;
+  height: 0.95rem;
+  background: var(--ink);
 }
 
 .limit {
@@ -1214,7 +1319,7 @@ dialog::backdrop {
   }
 
   h1 {
-    max-width: 14ch;
+    max-width: 22ch;
   }
 }
 

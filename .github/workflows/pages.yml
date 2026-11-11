@@ -37,7 +37,7 @@ jobs:
       - name: Assemble static site
         run: |
           mkdir -p _site
-          cp -a index.html favicon.svg css js data fonts .nojekyll _site/
+          cp -a index.html favicon.svg css js data fonts images .nojekyll _site/
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload site

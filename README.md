@@ -1,6 +1,6 @@
 # Rolls & the Estimate
 
-An independent, static website that checks a November 10, 2026 public claim about Alabama voter registration against two primary sources:
+An independent, static website. The top of the page quotes a November 10, 2026 post by Patriot (@_Patriot1776Q_) and the headlines printed on its graphic, then shows that those figures match two primary sources:
 
 - Alabama Secretary of State, `ALVR-2026.xlsx`, October worksheet (active + inactive).
 - U.S. Census Bureau, Citizen Voting Age Population special tabulation, 2020–2024 ACS, line “Total” (`cvap_est`, `cvap_moe`).
